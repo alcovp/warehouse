@@ -1,0 +1,20 @@
+{
+	"users": "/пользователи",
+	"projects": "/проекты",
+	"locations": "/места",
+	"items": "/предметы",
+	"transactions": "/транзакции",
+	"reports": "/отчёты",
+	"logout": "выйти",
+	"Login": "Вход",
+	"Register": "Регистрация",
+	"Username": "Username",
+	"Role": "Role",
+	"Registered": "Registered",
+	"Last login": "Last login",
+	"no members": "нет членов",
+	"Update members": "Задать членов",
+	"choose project": "выбрать проект",
+	"Name:": "Название:",
+	"Create": "Создать"
+}

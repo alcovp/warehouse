@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    each project in projects
+        div(class='row')
+            span(class='row-field row-field-name')= project.name
+            span(class='row-field row-field-name')
+                each member, index in project.members ? project.members : []
+                    if (index !== project.members.length - 1)
+                        =member.name + ', '
+                    else
+                        =member.name
+                else
+                    = __('no members')
+            form(action='/warehouse/projects/set-members', method='POST')
+                input(type='hidden' name='projectId' value=project.id)
+                select(multiple name='members')
+                    each user in users
+                        option(value=user.id)= user.username
+                input(type='submit', value=__('Update members'))
+            a(href="/warehouse/projects/choose/" + project.id)= __('choose project')
+
+    else
+        p There are no objects yet
+    hr
+    div(class='projects-new')
+        form(action='/warehouse/projects', method='POST')
+            label(for='name')= __('Name:')
+            input(type='text', id='name', name='name', required)
+            input(type='submit', value=__('Create'))

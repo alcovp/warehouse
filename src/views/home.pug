@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    if (!user)
+        a(href="/warehouse/login")= __('Login')
+        br
+        a(href="/warehouse/register")= __('Register')
+    if (user)
+        p You are currently logged in as #{user.username}
+        a(href="/warehouse/logout")= __('Logout')

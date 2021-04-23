@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    each transaction in transactions
+        div(class='row')
+            span(class='row-field row-field-name')= transaction.source.name
+            span(class='row-field') ->
+            span(class='row-field row-field-name')= transaction.destination.name
+            span(class='row-field row-field-name')= transaction.item.name
+            span(class='row-field row-field-quantity')= transaction.quantity
+            span(class='row-field row-field-date')= transaction.date
+
+    else
+        p There are no objects yet
+    hr
+    div(class='transactions-new')
+        form(class='', action='/warehouse/transactions', method='POST')
+            select(name='sourceId' required)
+                option(value='' selected) choose one
+                each location in locations
+                    option(value=location.id)= location.name
+            select(name='destinationId' required)
+                option(value='' selected) choose one
+                each location in locations
+                    option(value=location.id)= location.name
+            select(name='itemId')
+                option(value='' selected) choose one
+                each item in items
+                    option(value=item.id)= item.name
+            br
+            label(for='quantity') Quantity:
+            input(type='number', id='quantity', name='quantity', value='1' required)
+            input(type='submit', value='Create')

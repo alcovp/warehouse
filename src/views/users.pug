@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    table(class='users-table')
+        tr
+            th= __('Username')
+            th= __('Role')
+            th= __('Registered')
+            if role === 'admin'
+                th= __('Last login')
+        each user in users
+            tr
+                td= user.username
+                td= user.role
+                td= user.date
+                if user.lastLogin
+                    td= user.lastLogin

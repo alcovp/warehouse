@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title Warehouse
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/warehouse/css/style.css')
+        block head
+            script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    body
+        div(class='header')
+            span
+                a(class='header-link', href='/warehouse/users')= __('users')
+                a(class='header-link', href='/warehouse/projects')= __('projects')
+                a(class='header-link', href='/warehouse/locations')= __('locations')
+                a(class='header-link', href='/warehouse/items')= __('items')
+                a(class='header-link', href='/warehouse/transactions')= __('transactions')
+                a(class='header-link', href='/warehouse/reports')= __('reports')
+            span(class='header-right')
+                if currentProject
+                    span= currentProject.name + ' '
+                if username
+                    span= username
+                span(class='logout-link')
+                    a(href='/warehouse/logout')= __('logout')
+        div(class='column')
+            block content

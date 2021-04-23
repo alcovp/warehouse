@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    each item in items
+        div(class='row')
+            p= item.name
+
+    else
+        p There are no objects yet
+    hr
+    div(class='items-new')
+        form(class='', action='/warehouse/items', method='POST')
+            label(for='name') Name:
+            input(type='text', id='name', name='name', required)
+            input(type='submit', value='Create')

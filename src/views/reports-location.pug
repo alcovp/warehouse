@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    each row in report ? report : []
+        div(class='row')
+            span(class='row-field row-field-name')= row.item.name
+            span(class='row-field row-field-quantity')= row.quantity
+
+    form(class='', action='/warehouse/reports/location', method='POST')
+        select(name='locationId' required)
+            option(value='' selected) choose one
+            each location in locations
+                option(value=location.id)= location.name
+        input(type='submit', value='Report')

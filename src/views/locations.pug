@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    each location in locations
+        div(class='row')
+            p= location.name
+
+    else
+        p There are no objects yet
+    hr
+    div(class='locations-new')
+        form(class='', action='/warehouse/locations', method='POST')
+            label(for='name') Name:
+            input(type='text', id='name', name='name', required)
+            input(type='submit', value='Create')
